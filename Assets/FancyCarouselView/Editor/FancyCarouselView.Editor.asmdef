@@ -1,0 +1,19 @@
+{
+    "name": "FancyCarouselView.Editor",
+    "references": [
+        "GUID:59f6770f7492c42ff827a64ac010ac49",
+        "GUID:310eb4609be1c41459e5ebb1bde5ac5a",
+        "GUID:508cd0edd40d740d38308988898213a3"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
