@@ -317,7 +317,7 @@ namespace FancyCarouselView.Runtime.Scripts
 
         private void OnDrawGizmos()
         {
-            if (cellContainer != null)
+            if (cellContainer != null && _scroller != null)
             {
                 DrawCellRect();
             }
