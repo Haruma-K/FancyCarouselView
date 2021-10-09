@@ -2,7 +2,7 @@
 
 [![license](https://img.shields.io/badge/LICENSE-MIT-green.svg)](LICENSE.md)
 
-[日本語ドキュメント(Japanese Documents Available)](README-JA.md)
+[日本語ドキュメント(Japanese Documents Available)](README_JA.md)
 
 Carousel View for Unity uGUI using <a href="https://github.com/setchi/FancyScrollView">Fancy Scroll View</a>.
 
