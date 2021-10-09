@@ -10,9 +10,28 @@
   <img width=700 src="https://user-images.githubusercontent.com/47441314/136406607-a3bc489f-2c77-40bc-bc6d-d2858f82a73c.gif" alt="Demo">
 </p>
 
-<!-- START doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 <!-- param::title::**目次**:: -->
-<!-- END doctoc -->
+**目次**
+
+- [機能](#%E6%A9%9F%E8%83%BD)
+- [デモ](#%E3%83%87%E3%83%A2)
+- [セットアップ](#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
+    - [要件](#%E8%A6%81%E4%BB%B6)
+    - [インストール](#%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+- [基本的な使い方](#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E4%BD%BF%E3%81%84%E6%96%B9)
+    - [セルのためのデータを作成する](#%E3%82%BB%E3%83%AB%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B)
+    - [セルを作成する](#%E3%82%BB%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B)
+    - [カルーセルビューを作成する](#%E3%82%AB%E3%83%AB%E3%83%BC%E3%82%BB%E3%83%AB%E3%83%93%E3%83%A5%E3%83%BC%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B)
+    - [カルーセルビューを初期化する](#%E3%82%AB%E3%83%AB%E3%83%BC%E3%82%BB%E3%83%AB%E3%83%93%E3%83%A5%E3%83%BC%E3%82%92%E5%88%9D%E6%9C%9F%E5%8C%96%E3%81%99%E3%82%8B)
+- [応用的な使い方](#%E5%BF%9C%E7%94%A8%E7%9A%84%E3%81%AA%E4%BD%BF%E3%81%84%E6%96%B9)
+    - [Carousel Viewの各プロパティを理解する](#carousel-view%E3%81%AE%E5%90%84%E3%83%97%E3%83%AD%E3%83%91%E3%83%86%E3%82%A3%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B)
+    - [プログレスビューを使用する](#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%AC%E3%82%B9%E3%83%93%E3%83%A5%E3%83%BC%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B)
+    - [セルの動きをカスタムする](#%E3%82%BB%E3%83%AB%E3%81%AE%E5%8B%95%E3%81%8D%E3%82%92%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%A0%E3%81%99%E3%82%8B)
+- [ライセンス](#%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## 機能
 * カルーセルビューを数ステップで簡単に作成可能
