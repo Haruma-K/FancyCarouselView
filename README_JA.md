@@ -14,9 +14,8 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 <!-- param::isNotitle::true:: -->
-**目次**
 
-- [機能](#%E6%A9%9F%E8%83%BD)
+- [特徴](#%E7%89%B9%E5%BE%B4)
 - [デモ](#%E3%83%87%E3%83%A2)
 - [セットアップ](#%E3%82%BB%E3%83%83%E3%83%88%E3%82%A2%E3%83%83%E3%83%97)
     - [要件](#%E8%A6%81%E4%BB%B6)
