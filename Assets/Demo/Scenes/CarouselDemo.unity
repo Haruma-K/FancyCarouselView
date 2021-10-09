@@ -648,7 +648,7 @@ MonoBehaviour:
   _snapAnimationDuration: 0.25
   _snapAnimationType: 17
   _autoScrollingEnabled: 1
-  _autoScrollingIntervalSec: 1
+  _autoScrollingIntervalSec: 3
   _inverseAutoScrollingDirection: 0
   _progressView: {fileID: 446624512}
 --- !u!114 &1539422974

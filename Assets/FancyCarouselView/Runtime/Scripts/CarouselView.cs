@@ -27,7 +27,7 @@ namespace FancyCarouselView.Runtime.Scripts
         [SerializeField] private Scroller _scroller = default;
         [SerializeField] private TCell _cellPrefab = default;
         [SerializeField] private Vector2 _cellSize = new Vector2(100, 100);
-        [SerializeField] private float _cellSpacing = default;
+        [SerializeField] private float _cellSpacing = 30.0f;
         [SerializeField] private float _snapAnimationDuration = 0.2f;
         [SerializeField] private Ease _snapAnimationType = Ease.OutQuad;
         [SerializeField] private bool _autoScrollingEnabled = default;
