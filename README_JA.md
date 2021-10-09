@@ -10,9 +10,10 @@
   <img width=700 src="https://user-images.githubusercontent.com/47441314/136406607-a3bc489f-2c77-40bc-bc6d-d2858f82a73c.gif" alt="Demo">
 </p>
 
+## 目次
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-<!-- param::title::**目次**:: -->
+<!-- param::isNotitle::true:: -->
 **目次**
 
 - [機能](#%E6%A9%9F%E8%83%BD)
@@ -33,7 +34,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## 機能
+## 特徴
 * カルーセルビューを数ステップで簡単に作成可能
 * 表示に不要なセルが使いまわされるため高パフォーマンス
 * 縦/横スクロールに対応
