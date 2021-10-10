@@ -176,7 +176,7 @@ Carousel ViewのInspectorで設定できる各プロパティの説明は以下�
 
 <table>
 <thead>
-<tr><td colspan="3">プロパティ名</td><td>説明</td></tr>
+<tr><td colspan="3"><b>プロパティ名</b></td><td><b>説明</b></td></tr>
 </thead>
 <tbody>
 <tr><td colspan="3">Cell Container</td><td>カルーセルビューの領域を表すRectTransform。<br>この領域から出たセルは非表示になり、再利用の対象になります。</td></tr>

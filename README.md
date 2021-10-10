@@ -176,7 +176,7 @@ The description of each property in the Carousel View inspector is as follows.
 
 <table>
 <thead>
-<tr><td colspan="3">Property Name</td><td>Description</td></tr>
+<tr><td colspan="3"><b>Property Name</b></td><td><b>Description</b></td></tr>
 </thead>
 <tbody>
 <tr><td colspan="3">Cell Container</td><td>RectTransform representing the area of the carousel view.<br>Cells outside this area will be hidden and be reused.</td></tr>
