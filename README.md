@@ -35,7 +35,7 @@ Carousel View for Unity uGUI using <a href="https://github.com/setchi/FancyScrol
 
 ## Features
 * You can create the Carousel View in a few simple steps.  
-* High performance becaruse cells that are not needed for display are reused.
+* High performance because cells that are not needed for display are reused.
 * Supports vertical and horizontal scrolling.
 * The movement of the carousel and each parameters can be customized in detail.
 
