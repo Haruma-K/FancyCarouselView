@@ -37,6 +37,7 @@ namespace FancyCarouselView.Runtime.Scripts
         private int _activeCellIndex = -1;
         private Coroutine _autoScrollCoroutine;
         private Coroutine _scrollCoroutine;
+        private bool _draggableCache;
 
         protected override GameObject CellPrefab => _cellPrefab.gameObject;
 
@@ -135,8 +136,16 @@ namespace FancyCarouselView.Runtime.Scripts
         
         void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
         {
-            if (!Draggable)
+            _draggableCache = _scroller.Draggable;
+            if (!_scroller.Draggable)
             {
+                return;
+            }
+            
+            if (_scroller.ScrollDirection == ScrollDirection.Vertical && Math.Abs(eventData.delta.x) > Math.Abs(eventData.delta.y)
+                || _scroller.ScrollDirection == ScrollDirection.Horizontal && Math.Abs(eventData.delta.x) < Math.Abs(eventData.delta.y))
+            {
+                _scroller.Draggable = false;
                 return;
             }
 
@@ -159,7 +168,8 @@ namespace FancyCarouselView.Runtime.Scripts
 
         void IEndDragHandler.OnEndDrag(PointerEventData eventData)
         {
-            if (!Draggable)
+            _scroller.Draggable = _draggableCache;
+            if (!_scroller.Draggable)
             {
                 return;
             }
