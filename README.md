@@ -252,4 +252,4 @@ However, the following copyright and license notices are required for use.
 * https://github.com/Haruma-K/FancyCarouselView/blob/master/LICENSE.md
 
 And note that the scrolling feature is based on the [FancyScrollView](https://github.com/setchi/FancyScrollView) .  
-You will also need to include the license for this software.
+You also need to include the license for this software.
