@@ -29,6 +29,7 @@ Carousel View for Unity uGUI using <a href="https://github.com/setchi/FancyScrol
     - [Understand the properties of the Carousel View](#understand-the-properties-of-the-carousel-view)
     - [Use the progress View](#use-the-progress-view)
     - [Custom cell movements](#custom-cell-movements)
+    - [Use with scroll view](#use-with-scroll-view)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
