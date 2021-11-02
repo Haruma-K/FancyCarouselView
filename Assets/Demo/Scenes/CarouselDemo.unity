@@ -617,7 +617,6 @@ GameObject:
   - component: {fileID: 1539422976}
   - component: {fileID: 1539422974}
   - component: {fileID: 1539422973}
-  - component: {fileID: 1539422978}
   m_Layer: 5
   m_Name: Carousel View
   m_TagString: Untagged
@@ -734,18 +733,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539422972}
   m_CullTransparentMesh: 0
---- !u!114 &1539422978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1539422972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85aedb7fe77344521bcb21f230abd15a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1553209351
 GameObject:
   m_ObjectHideFlags: 0

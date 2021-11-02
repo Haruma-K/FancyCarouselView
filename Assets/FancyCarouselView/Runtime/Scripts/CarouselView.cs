@@ -17,7 +17,6 @@ namespace FancyCarouselView.Runtime.Scripts
     /// <typeparam name="TCell"></typeparam>
     [RequireComponent(typeof(CarouselScroller))]
     [RequireComponent(typeof(Image))]
-    [RequireComponent(typeof(ScrollEventPropagator))]
     [DisallowMultipleComponent]
     public abstract class CarouselView<TData, TCell> : FancyScrollView<TData, CarouselContext<TData, TCell>>,
         ICarouselView<TData, TCell>, IBeginDragHandler, IDragHandler,

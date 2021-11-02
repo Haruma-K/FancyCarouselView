@@ -228,7 +228,24 @@ protected override void OnPositionUpdated(float position)
 ```
 
 <p align="center">
-  <img width=700 src="https://user-images.githubusercontent.com/47441314/136646317-d2138797-024a-44d4-af4c-b3d389972890.gif" alt="Demo">
+  <img width=600 src="https://user-images.githubusercontent.com/47441314/136646317-d2138797-024a-44d4-af4c-b3d389972890.gif" alt="Demo">
+</p>
+
+#### スクロールビューと併せて使う
+スクロールビューのコンテンツとしてカルーセルビューを使う場合、  
+Unityの仕様によりカルーセルビューがスクロールビューのドラッグをブロックします。  
+すなわち、カルーセルビューをドラッグしてもスクロールビューはスクロールしません。
+
+<p align="center">
+  <img width=600 src="https://user-images.githubusercontent.com/47441314/139780467-5678bf8a-fe4b-46d4-a8e6-34c66c24d4f2.gif" alt="Demo">
+</p>
+
+このような場合にはカルーセルビューのGameObjectに`Scroll Event Propagator`コンポーネントをアタッチします。  
+このコンポーネントはドラッグイベントを適切に親の`ScrollRect`に伝播します。  
+結果として以下のようにスクロールビューとカルーセルビューが適切に動作します。
+
+<p align="center">
+  <img width=600 src="https://user-images.githubusercontent.com/47441314/139779762-13e992e1-ccc6-4819-a283-9ec5a79ce4e9.gif" alt="Demo">
 </p>
 
 ## ライセンス
@@ -237,3 +254,5 @@ protected override void OnPositionUpdated(float position)
 使用の際は以下の著作権表示とライセンス表示が必須となります。
 
 * https://github.com/Haruma-K/FancyCarouselView/blob/master/LICENSE.md
+
+スクロール機能は[FancyScrollView](https://github.com/setchi/FancyScrollView)をベースにしていため、このライセンスも含める必要があります。

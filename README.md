@@ -227,9 +227,28 @@ protected override void OnPositionUpdated(float position)
   <img width=700 src="https://user-images.githubusercontent.com/47441314/136646317-d2138797-024a-44d4-af4c-b3d389972890.gif" alt="Demo">
 </p>
 
+#### Use with scroll view
+When you use the carousel view as the content of the scroll view, the carousel view blocks the dragging of the scroll view according to the Unity specification.  
+In other words, dragging the carousel view will not scroll the scroll view.
+
+<p align="center">
+  <img width=600 src="https://user-images.githubusercontent.com/47441314/139780467-5678bf8a-fe4b-46d4-a8e6-34c66c24d4f2.gif" alt="Demo">
+</p>
+
+In such a case, attach the `Scroll Event Propagator` component to the Carousel View GameObject.  
+This component will propagate drag events to the parent `ScrollRect` properly.  
+As a result, the scroll view and carousel view will work properly as shown below.
+
+<p align="center">
+  <img width=600 src="https://user-images.githubusercontent.com/47441314/139779762-13e992e1-ccc6-4819-a283-9ec5a79ce4e9.gif" alt="Demo">
+</p>
+
 ## License
 This software is released under the MIT License.  
 You are free to use it within the scope of the license.  
 However, the following copyright and license notices are required for use.
 
 * https://github.com/Haruma-K/FancyCarouselView/blob/master/LICENSE.md
+
+And note that the scrolling feature is based on the [FancyScrollView](https://github.com/setchi/FancyScrollView) .  
+You will also need to include the license for this software.
