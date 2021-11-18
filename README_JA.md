@@ -256,4 +256,8 @@ Unityの仕様によりカルーセルビューがスクロールビューのド
 
 * https://github.com/Haruma-K/FancyCarouselView/blob/master/LICENSE.md
 
-スクロール機能は[FancyScrollView](https://github.com/setchi/FancyScrollView)をベースにしていため、このライセンスも含める必要があります。
+また、本ソフトウェアは以下のソフトウェアがインストールされていることを前提として実装されています（同梱はされていません）。
+
+* [FancyScrollView](https://github.com/setchi/FancyScrollView)
+
+このソフトウェアのライセンスの詳細については [Third Party Notices.md](ThirdPartyNotices.md) を参照してください。

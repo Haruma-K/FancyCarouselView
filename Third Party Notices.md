@@ -1,4 +1,11 @@
-Copyright 2021 Haruki Yano
+This software is implemented on the assumption that the following software is installed (not included).
+---------
+
+FancyScrollView (https://github.com/setchi/FancyScrollView)
+
+The MIT License (MIT)
+
+Copyright (c) 2020 setchi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

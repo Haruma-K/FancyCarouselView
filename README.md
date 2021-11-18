@@ -249,7 +249,10 @@ This software is released under the MIT License.
 You are free to use it within the scope of the license.  
 However, the following copyright and license notices are required for use.
 
-* https://github.com/Haruma-K/FancyCarouselView/blob/master/LICENSE.md
+* [LICENSE.md](LICENSE.md)
 
-And note that the scrolling feature is based on the [FancyScrollView](https://github.com/setchi/FancyScrollView) .  
-You will also need to include the license for this software.
+And this software is implemented on the assumption that the following software is installed (not included).
+
+* [FancyScrollView](https://github.com/setchi/FancyScrollView)
+
+See [Third Party Notices.md](ThirdPartyNotices.md) for details on the license of this software.
