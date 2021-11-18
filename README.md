@@ -255,4 +255,4 @@ And this software is implemented on the assumption that the following software i
 
 * [FancyScrollView](https://github.com/setchi/FancyScrollView)
 
-See [Third Party Notices.md](ThirdPartyNotices.md) for details on the license of this software.
+See [Third Party Notices.md](Third%20Party%20Notices.md) for details on the license of this software.

@@ -260,4 +260,4 @@ Unityの仕様によりカルーセルビューがスクロールビューのド
 
 * [FancyScrollView](https://github.com/setchi/FancyScrollView)
 
-このソフトウェアのライセンスの詳細については [Third Party Notices.md](ThirdPartyNotices.md) を参照してください。
+このソフトウェアのライセンスの詳細については [Third Party Notices.md](Third%20Party%20Notices.md) を参照してください。
