@@ -211,7 +211,7 @@ Fancy Carousel Viewはカルーセルの進捗を表すプログレスビュー�
 `DotCarouselProgressView`のInspectorからProgress Element Prefabだけを差し替えることで実現できます。
 
 <p align="center">
-  <img width=700 src="https://user-images.githubusercontent.com/47441314/143854073-ce7b5f99-22b8-438d-b6dc-44a2aa1eb52f.gif" alt="Custom Progress View">
+  <img width=600 src="https://user-images.githubusercontent.com/47441314/143854073-ce7b5f99-22b8-438d-b6dc-44a2aa1eb52f.gif" alt="Custom Progress View">
 </p>
 
 #### セルの動きをカスタムする
