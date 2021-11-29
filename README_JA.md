@@ -210,6 +210,10 @@ Fancy Carousel Viewはカルーセルの進捗を表すプログレスビュー�
 また、`DotCarouselProgressView`を使用しつつドットの色やサイズだけを変えたい場合には、  
 `DotCarouselProgressView`のInspectorからProgress Element Prefabだけを差し替えることで実現できます。
 
+<p align="center">
+  <img width=700 src="https://user-images.githubusercontent.com/47441314/143854073-ce7b5f99-22b8-438d-b6dc-44a2aa1eb52f.gif" alt="Custom Progress View">
+</p>
+
 #### セルの動きをカスタムする
 `CarouselCell.OnPositionUpdated`をオーバーライドするとセルの動きを独自実装できます。  
 以下はセルの動きを独自実装した例です。
