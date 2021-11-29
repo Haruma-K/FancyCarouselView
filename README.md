@@ -206,6 +206,10 @@ You can use the simple dot progress view by the following steps.
 
 If you want to change only the color or size of the dot while using `DotCarouselProgressView`, you can do so by replacing only the Progress Element Prefab in the Inspector of `DotCarouselProgressView`.
 
+<p align="center">
+  <img width=700 src="https://user-images.githubusercontent.com/47441314/143854073-ce7b5f99-22b8-438d-b6dc-44a2aa1eb52f.gif" alt="Custom Progress View">
+</p>
+
 #### Custom cell movements
 You can override `CarouselCell.OnPositionUpdated` to implement your own cell movement.  
 The following is an example of a custom cell movements.
