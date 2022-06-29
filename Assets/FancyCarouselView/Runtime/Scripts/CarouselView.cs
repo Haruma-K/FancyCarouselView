@@ -220,6 +220,7 @@ namespace FancyCarouselView.Runtime.Scripts
         {
             while (true)
             {
+                yield return new WaitForSeconds(_autoScrollingIntervalSec);
                 var beforeScrollPosition = ActiveCellPosition - 1;
                 var afterScrollPosition = ActiveCellPosition + 1;
                 if (!loop)
@@ -227,7 +228,6 @@ namespace FancyCarouselView.Runtime.Scripts
                     beforeScrollPosition = Mathf.Max(0, beforeScrollPosition);
                     afterScrollPosition = Mathf.Min(DataCount - 1, afterScrollPosition);
                 }
-                yield return new WaitForSeconds(_autoScrollingIntervalSec);
                 var position = _inverseAutoScrollingDirection ? beforeScrollPosition : afterScrollPosition;
                 yield return ScrollRoutine(position, _snapAnimationDuration, _snapAnimationType);
             }
