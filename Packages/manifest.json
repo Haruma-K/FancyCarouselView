@@ -1,11 +1,12 @@
 {
   "dependencies": {
-    "com.unity.collab-proxy": "1.2.16",
-    "com.unity.ide.rider": "1.1.4",
-    "com.unity.ide.vscode": "1.2.0",
-    "com.unity.test-framework": "1.1.14",
-    "com.unity.textmeshpro": "2.0.1",
-    "com.unity.timeline": "1.2.14",
+    "com.unity.collab-proxy": "1.14.1",
+    "com.unity.ide.rider": "1.2.1",
+    "com.unity.ide.visualstudio": "2.0.11",
+    "com.unity.ide.vscode": "1.2.4",
+    "com.unity.test-framework": "1.1.29",
+    "com.unity.textmeshpro": "2.1.4",
+    "com.unity.timeline": "1.2.18",
     "com.unity.ugui": "1.0.0",
     "jp.setchi.fancyscrollview": "https://github.com/setchi/FancyScrollView.git#upm",
     "com.unity.modules.ai": "1.0.0",
@@ -39,11 +40,5 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  },
-  "lock": {
-    "jp.setchi.fancyscrollview": {
-      "revision": "upm",
-      "hash": "e5d10d3e5961848f93be43c2911344750b509a88"
-    }
   }
 }
