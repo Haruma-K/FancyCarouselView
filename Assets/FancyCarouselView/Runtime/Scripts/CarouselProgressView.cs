@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace FancyCarouselView.Runtime.Scripts
 {
@@ -18,5 +19,13 @@ namespace FancyCarouselView.Runtime.Scripts
         /// </summary>
         /// <param name="elementIndex"></param>
         public abstract void SetActiveIndex(int elementIndex);
+    }
+
+    public abstract class ClickableCarouselProgressView : CarouselProgressView
+    {
+        /// <summary>
+        ///     Event called when the element of the carousel is clicked.
+        /// </summary>
+        public abstract event Action<int> ElementClicked;
     }
 }

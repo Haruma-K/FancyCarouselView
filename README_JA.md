@@ -193,6 +193,7 @@ Carousel ViewのInspectorで設定できる各プロパティの説明は以下�
 <tr><td colspan="3">Loop</td><td>両端でループするかどうか。</td></tr>
 <tr><td colspan="3">Draggable</td><td>ドラッグ可能かどうか。</td></tr>
 <tr><td colspan="3">Progress View</td><td>進捗を表すビュー。詳細は後述。</td></tr>
+<tr><td></td><td colspan=2>Clickable</td><td>Progress Viewをクリックした時にそのインデックスにジャンプするか。</td></tr>
 </tbody>
 </table>
 
@@ -205,7 +206,7 @@ Fancy Carousel Viewはカルーセルの進捗を表すプログレスビュー�
 2. Carousel ViewのProgress Viewプロパティに1.をアサイン
 
 上記のPrefabには`CarouselProgressView`を継承した`DotCarouselProgressView`がアタッチされています。  
-`CarouselProgressView`を継承したクラスを独自で実装すれば、任意の挙動をするプログレスビューを作成できます。
+`CarouselProgressView`や`ClickableCarouselProgressView`を継承したクラスを独自で実装すれば、任意の挙動をするプログレスビューを作成できます。
 
 また、`DotCarouselProgressView`を使用しつつドットの色やサイズだけを変えたい場合には、  
 `DotCarouselProgressView`のInspectorからProgress Element Prefabだけを差し替えることで実現できます。

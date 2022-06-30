@@ -8,12 +8,14 @@ namespace FancyCarouselView.Runtime.Scripts
     /// <summary>
     ///     View that represents the progress of the carousel view with dots.
     /// </summary>
-    public sealed class DotCarouselProgressView : CarouselProgressView
+    public sealed class DotCarouselProgressView : ClickableCarouselProgressView
     {
-        [SerializeField] private DotCarouselProgressElement progressElementPrefab = default;
+        [SerializeField] private DotCarouselProgressElement progressElementPrefab;
         private int _activeIndex = -1;
 
         private List<DotCarouselProgressElement> _progressElementInstances = new List<DotCarouselProgressElement>();
+
+        public override event Action<int> ElementClicked;
 
         /// <summary>
         ///     Set up.
@@ -23,23 +25,20 @@ namespace FancyCarouselView.Runtime.Scripts
         public override void Setup(int elementCount)
         {
             if (GetComponent<HorizontalLayoutGroup>() == null && GetComponent<VerticalLayoutGroup>() == null)
-            {
                 throw new InvalidOperationException(
                     $"{nameof(DotCarouselProgressView)} requires {nameof(HorizontalLayoutGroup)} or {nameof(VerticalLayoutGroup)}. Make sure it is attached.");
-            }
 
             _progressElementInstances = new List<DotCarouselProgressElement>(elementCount);
             for (var i = 0; i < elementCount; i++)
             {
+                var index = i;
                 var instance = Instantiate(progressElementPrefab, transform);
                 instance.SetActive(false);
+                instance.Button.onClick.AddListener(() => OnElementClicked(index));
                 _progressElementInstances.Add(instance);
             }
 
-            if (_activeIndex != -1)
-            {
-                SetActiveIndex(_activeIndex);
-            }
+            if (_activeIndex != -1) SetActiveIndex(_activeIndex);
         }
 
         /// <summary>
@@ -61,6 +60,11 @@ namespace FancyCarouselView.Runtime.Scripts
             }
 
             _activeIndex = elementIndex;
+        }
+
+        private void OnElementClicked(int index)
+        {
+            ElementClicked?.Invoke(index);
         }
     }
 }
