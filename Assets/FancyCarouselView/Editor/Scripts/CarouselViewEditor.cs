@@ -32,6 +32,7 @@ namespace FancyCarouselView.Editor.Scripts
             var autoScrollingIntervalSecProp = serializedObject.FindProperty("_autoScrollingIntervalSec");
             var inverseAutoScrollingDirectionProp = serializedObject.FindProperty("_inverseAutoScrollingDirection");
             var progressView = serializedObject.FindProperty("_progressView");
+            var progressViewInteraction = serializedObject.FindProperty("_progressViewInteraction");
             var csMovementTypeProp = carouselScrollerSo.FindProperty("movementType");
             var csScrollDirectionProp = carouselScrollerSo.FindProperty("scrollDirection");
             var csDraggableProp = carouselScrollerSo.FindProperty("draggable");
@@ -84,6 +85,10 @@ namespace FancyCarouselView.Editor.Scripts
 
             EditorGUILayout.PropertyField(csDraggableProp);
             EditorGUILayout.PropertyField(progressView);
+            using (new EditorGUI.IndentLevelScope())
+            {
+                EditorGUILayout.PropertyField(progressViewInteraction, new GUIContent("Clickable"));
+            }
 
             carouselScrollerSo.ApplyModifiedProperties();
             carouselScrollerSo.Dispose();

@@ -23,21 +23,28 @@ namespace FancyCarouselView.Runtime.Scripts
         IEndDragHandler where TCell : CarouselCell<TData, TCell>
     {
         private const float FlickThreshold = 3.0f;
-        
-        [SerializeField] private Scroller _scroller = default;
-        [SerializeField] private TCell _cellPrefab = default;
+
+        [SerializeField] private Scroller _scroller;
+        [SerializeField] private TCell _cellPrefab;
         [SerializeField] private Vector2 _cellSize = new Vector2(100, 100);
         [SerializeField] private float _cellSpacing = 30.0f;
         [SerializeField] private float _snapAnimationDuration = 0.2f;
         [SerializeField] private Ease _snapAnimationType = Ease.OutQuad;
-        [SerializeField] private bool _autoScrollingEnabled = default;
+        [SerializeField] private bool _autoScrollingEnabled;
         [SerializeField] private float _autoScrollingIntervalSec = 3.0f;
-        [SerializeField] private bool _inverseAutoScrollingDirection = default;
-        [SerializeField] private CarouselProgressView _progressView = default;
+        [SerializeField] private bool _inverseAutoScrollingDirection;
+        [SerializeField] private CarouselProgressView _progressView;
+        [SerializeField] private bool _progressViewInteraction;
         private int _activeCellIndex = -1;
         private Coroutine _autoScrollCoroutine;
-        private Coroutine _scrollCoroutine;
         private bool _draggableCache;
+        private Coroutine _scrollCoroutine;
+
+        public bool ProgressViewInteraction
+        {
+            get => _progressViewInteraction;
+            set => _progressViewInteraction = value;
+        }
 
         protected override GameObject CellPrefab => _cellPrefab.gameObject;
 
@@ -45,18 +52,35 @@ namespace FancyCarouselView.Runtime.Scripts
 
         private void Awake()
         {
-            if (_progressView != null)
-            {
-                ActiveCellChanged += _progressView.SetActiveIndex;
-            }
+            if (_progressView != null) ActiveCellChanged += _progressView.SetActiveIndex;
         }
 
         private void OnDestroy()
         {
-            if (_progressView != null)
+            if (_progressView != null) ActiveCellChanged -= _progressView.SetActiveIndex;
+        }
+
+        void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
+        {
+            _draggableCache = _scroller.Draggable;
+            if (!_scroller.Draggable) return;
+
+            if ((_scroller.ScrollDirection == ScrollDirection.Vertical &&
+                 Math.Abs(eventData.delta.x) > Math.Abs(eventData.delta.y))
+                || (_scroller.ScrollDirection == ScrollDirection.Horizontal &&
+                    Math.Abs(eventData.delta.x) < Math.Abs(eventData.delta.y)))
             {
-                ActiveCellChanged -= _progressView.SetActiveIndex;
+                _scroller.Draggable = false;
+                return;
             }
+
+            if (IsScrolling)
+                StopScrolling();
+
+            if (IsAutoScrolling)
+                StopAutoScrolling();
+
+            IsDragging = true;
         }
 
         public ActiveCellChangedDelegate ActiveCellChanged { get; set; }
@@ -90,28 +114,20 @@ namespace FancyCarouselView.Runtime.Scripts
             _scroller.SetTotalCount(DataCount);
             DataChanged?.Invoke();
             if (_progressView != null)
-            {
                 _progressView.Setup(DataCount);
-            }
         }
 
         public void ScrollToBefore(float duration, Ease easeType, Action onComplete = null)
         {
             var position = ActiveCellPosition - 1;
-            if (!loop)
-            {
-                position = Mathf.Max(0, position);
-            }
+            if (!loop) position = Mathf.Max(0, position);
             ScrollTo(position, duration, easeType, onComplete);
         }
 
         public void ScrollToAfter(float duration, Ease easeType, Action onComplete = null)
         {
             var position = ActiveCellPosition + 1;
-            if (!loop)
-            {
-                position = Mathf.Min(DataCount - 1, position);
-            }
+            if (!loop) position = Mathf.Min(DataCount - 1, position);
             ScrollTo(position, duration, easeType, onComplete);
         }
 
@@ -124,44 +140,17 @@ namespace FancyCarouselView.Runtime.Scripts
             }
 
             if (IsScrolling)
-            {
                 StopScrolling();
-            }
-
 
             var animationRoutine = ScrollRoutine(position, duration, easeType,
-                () => { _scrollCoroutine = null; });
+                () =>
+                {
+                    _scrollCoroutine = null;
+                    onComplete?.Invoke();
+                });
             _scrollCoroutine = StartCoroutine(animationRoutine);
         }
-        
-        void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
-        {
-            _draggableCache = _scroller.Draggable;
-            if (!_scroller.Draggable)
-            {
-                return;
-            }
-            
-            if (_scroller.ScrollDirection == ScrollDirection.Vertical && Math.Abs(eventData.delta.x) > Math.Abs(eventData.delta.y)
-                || _scroller.ScrollDirection == ScrollDirection.Horizontal && Math.Abs(eventData.delta.x) < Math.Abs(eventData.delta.y))
-            {
-                _scroller.Draggable = false;
-                return;
-            }
 
-            if (IsScrolling)
-            {
-                StopScrolling();
-            }
-
-            if (IsAutoScrolling)
-            {
-                StopAutoScrolling();
-            }
-
-            IsDragging = true;
-        }
-        
         void IDragHandler.OnDrag(PointerEventData eventData)
         {
         }
@@ -169,11 +158,8 @@ namespace FancyCarouselView.Runtime.Scripts
         void IEndDragHandler.OnEndDrag(PointerEventData eventData)
         {
             _scroller.Draggable = _draggableCache;
-            if (!_scroller.Draggable)
-            {
-                return;
-            }
-            
+            if (!_scroller.Draggable) return;
+
             var pos1 = Mathf.FloorToInt(_scroller.Position);
             var pos2 = Mathf.CeilToInt(_scroller.Position);
             if (!loop)
@@ -185,33 +171,38 @@ namespace FancyCarouselView.Runtime.Scripts
             float position;
             var deltaX = ScrollDirection == ScrollDirection.Horizontal ? eventData.delta.x : eventData.delta.y;
             if (deltaX < -FlickThreshold)
-            {
                 position = ScrollDirection == ScrollDirection.Horizontal ? pos2 : pos1;
-            }
             else if (deltaX > FlickThreshold)
-            {
                 position = ScrollDirection == ScrollDirection.Horizontal ? pos1 : pos2;
-            }
             else
-            {
                 position = ActiveCellPosition;
-            }
 
             ScrollTo(position, _snapAnimationDuration, _snapAnimationType);
             if (_autoScrollingEnabled)
-            {
                 StartAutoScrolling();
-            }
 
             IsDragging = false;
+        }
+
+        private void OnProgressViewElementClicked(int index)
+        {
+            if (!_progressViewInteraction)
+                return;
+
+            if (IsAutoScrolling)
+                StopAutoScrolling();
+
+            ScrollTo(index, _snapAnimationDuration, _snapAnimationType, () =>
+            {
+                if (_autoScrollingEnabled)
+                    StartAutoScrolling();
+            });
         }
 
         private void StartAutoScrolling()
         {
             if (IsAutoScrolling)
-            {
                 StopAutoScrolling();
-            }
 
             _autoScrollCoroutine = StartCoroutine(AutoScrollRoutine());
         }
@@ -228,6 +219,7 @@ namespace FancyCarouselView.Runtime.Scripts
                     beforeScrollPosition = Mathf.Max(0, beforeScrollPosition);
                     afterScrollPosition = Mathf.Min(DataCount - 1, afterScrollPosition);
                 }
+
                 var position = _inverseAutoScrollingDirection ? beforeScrollPosition : afterScrollPosition;
                 yield return ScrollRoutine(position, _snapAnimationDuration, _snapAnimationType);
             }
@@ -246,10 +238,7 @@ namespace FancyCarouselView.Runtime.Scripts
 
         protected override void Initialize()
         {
-            if (cellContainer == null)
-            {
-                cellContainer = transform;
-            }
+            if (cellContainer == null) cellContainer = transform;
 
             var rectTrans = (RectTransform)cellContainer.transform;
             var carouselSize = rectTrans.rect.width;
@@ -269,10 +258,10 @@ namespace FancyCarouselView.Runtime.Scripts
             ActiveCellChanged?.Invoke(ActiveCellIndex);
             _scroller.OnValueChanged(OnScrolled);
 
-            if (_autoScrollingEnabled)
-            {
-                StartAutoScrolling();
-            }
+            if (_autoScrollingEnabled) StartAutoScrolling();
+
+            if (_progressView != null && _progressView is ClickableCarouselProgressView clickableView)
+                clickableView.ElementClicked += OnProgressViewElementClicked;
         }
 
         private void OnScrolled(float position)
@@ -288,10 +277,7 @@ namespace FancyCarouselView.Runtime.Scripts
 
         private void StopScrolling()
         {
-            if (!IsScrolling)
-            {
-                return;
-            }
+            if (!IsScrolling) return;
 
             StopCoroutine(_scrollCoroutine);
             _scrollCoroutine = null;
@@ -299,10 +285,7 @@ namespace FancyCarouselView.Runtime.Scripts
 
         private void StopAutoScrolling()
         {
-            if (!IsAutoScrolling)
-            {
-                return;
-            }
+            if (!IsAutoScrolling) return;
 
             StopCoroutine(_autoScrollCoroutine);
             _autoScrollCoroutine = null;
@@ -319,18 +302,12 @@ namespace FancyCarouselView.Runtime.Scripts
         {
             loop = true;
             GetComponent<Image>().color = Color.clear;
-            if (cellContainer == null)
-            {
-                cellContainer = transform;
-            }
+            if (cellContainer == null) cellContainer = transform;
         }
 
         private void OnDrawGizmos()
         {
-            if (cellContainer != null && _scroller != null)
-            {
-                DrawCellRect();
-            }
+            if (cellContainer != null && _scroller != null) DrawCellRect();
         }
 
         private void DrawCellRect()
@@ -353,7 +330,7 @@ namespace FancyCarouselView.Runtime.Scripts
             Handles.DrawSolidRectangleWithOutline(cellRect, color, outlineColor);
             Handles.matrix = handlesMatrix;
         }
-        
+
 #endif
     }
 }

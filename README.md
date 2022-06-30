@@ -193,6 +193,7 @@ The description of each property in the Carousel View inspector is as follows.
 <tr><td colspan="3">Loop</td><td>If true, loop when reaches the end.</td></tr>
 <tr><td colspan="3">Draggable</td><td>Dragable or not.</td></tr>
 <tr><td colspan="3">Progress View</td><td>View that represents the progress. See below for details.</td></tr>
+<tr><td></td><td colspan=2>Clickable</td><td>If true, you can click progress view to scroll to the element at the clicked index.</td></tr>
 </tbody>
 </table>
 
@@ -203,6 +204,9 @@ You can use the simple dot progress view by the following steps.
 
 1. Instantiate `pfb_default_carousel_progress_view.prefab` in a scene.
 2. Assign 1. to the Progress View property of the Carousel View.
+
+`DotCarouselProgressView` derived from `CarouselProgressView` is attached to the Prefab above.  
+If you implement your own class that derived from `CarouselProgressView` or `ClickableCarouselProgressView`, you can create a progress view that behaves as you wish.
 
 If you want to change only the color or size of the dot while using `DotCarouselProgressView`, you can do so by replacing only the Progress Element Prefab in the Inspector of `DotCarouselProgressView`.
 
