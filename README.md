@@ -7,7 +7,7 @@
 Carousel View for Unity uGUI using <a href="https://github.com/setchi/FancyScrollView">Fancy Scroll View</a>.
 
 <p align="center">
-  <img width=700 src="https://user-images.githubusercontent.com/47441314/136406607-a3bc489f-2c77-40bc-bc6d-d2858f82a73c.gif" alt="Demo">
+  <img width="80%" src="https://user-images.githubusercontent.com/47441314/136406607-a3bc489f-2c77-40bc-bc6d-d2858f82a73c.gif" alt="Demo">
 </p>
 
 ## Table of Contents
