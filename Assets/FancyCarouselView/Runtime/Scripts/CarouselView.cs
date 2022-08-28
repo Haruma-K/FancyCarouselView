@@ -241,7 +241,9 @@ namespace FancyCarouselView.Runtime.Scripts
             if (cellContainer == null) cellContainer = transform;
 
             var rectTrans = (RectTransform)cellContainer.transform;
-            var carouselSize = rectTrans.rect.width;
+            var carouselSize = _scroller.ScrollDirection == ScrollDirection.Horizontal
+                ? rectTrans.rect.width
+                : rectTrans.rect.height;
             var intervalPerPx = 0.5f / carouselSize;
             var cellSize = _scroller.ScrollDirection == ScrollDirection.Horizontal ? _cellSize.x : _cellSize.y;
             var zeroSpacingInterval = 0.5f - (carouselSize - cellSize) * intervalPerPx;
