@@ -7,7 +7,7 @@
 Carousel View for Unity uGUI using <a href="https://github.com/setchi/FancyScrollView">Fancy Scroll View</a>.
 
 <p align="center">
-  <img width=700 src="https://user-images.githubusercontent.com/47441314/136406607-a3bc489f-2c77-40bc-bc6d-d2858f82a73c.gif" alt="Demo">
+  <img width="80%" src="https://user-images.githubusercontent.com/47441314/136406607-a3bc489f-2c77-40bc-bc6d-d2858f82a73c.gif" alt="Demo">
 </p>
 
 ## Table of Contents
@@ -62,7 +62,7 @@ So you need to install both of them.
    * https://github.com/Haruma-K/FancyCarouselView.git?path=/Assets/FancyCarouselView
 
 <p align="center">
-  <img width=500 src="https://user-images.githubusercontent.com/47441314/118421190-97842b00-b6fb-11eb-9f94-4dc94e82367a.png" alt="Package Manager">
+  <img width="60%" src="https://user-images.githubusercontent.com/47441314/118421190-97842b00-b6fb-11eb-9f94-4dc94e82367a.png" alt="Package Manager">
 </p>
 
 Or, open Packages/manifest.json and add the following to the dependencies block.
@@ -211,7 +211,7 @@ If you implement your own class that derived from `CarouselProgressView` or `Cli
 If you want to change only the color or size of the dot while using `DotCarouselProgressView`, you can do so by replacing only the Progress Element Prefab in the Inspector of `DotCarouselProgressView`.
 
 <p align="center">
-  <img width=700 src="https://user-images.githubusercontent.com/47441314/143854073-ce7b5f99-22b8-438d-b6dc-44a2aa1eb52f.gif" alt="Custom Progress View">
+  <img width="80%" src="https://user-images.githubusercontent.com/47441314/143854073-ce7b5f99-22b8-438d-b6dc-44a2aa1eb52f.gif" alt="Custom Progress View">
 </p>
 
 #### Custom cell movements
@@ -233,7 +233,7 @@ protected override void OnPositionUpdated(float position)
 ```
 
 <p align="center">
-  <img width=700 src="https://user-images.githubusercontent.com/47441314/136646317-d2138797-024a-44d4-af4c-b3d389972890.gif" alt="Demo">
+  <img width="80%" src="https://user-images.githubusercontent.com/47441314/136646317-d2138797-024a-44d4-af4c-b3d389972890.gif" alt="Demo">
 </p>
 
 #### Use with scroll view
@@ -241,7 +241,7 @@ When you use the carousel view as the content of the scroll view, the carousel v
 In other words, dragging the carousel view will not scroll the scroll view.
 
 <p align="center">
-  <img width=600 src="https://user-images.githubusercontent.com/47441314/139780467-5678bf8a-fe4b-46d4-a8e6-34c66c24d4f2.gif" alt="Demo">
+  <img width="70%" src="https://user-images.githubusercontent.com/47441314/139780467-5678bf8a-fe4b-46d4-a8e6-34c66c24d4f2.gif" alt="Demo">
 </p>
 
 In such a case, attach the `Scroll Event Propagator` component to the Carousel View GameObject.  
@@ -249,7 +249,7 @@ This component will propagate drag events to the parent `ScrollRect` properly.
 As a result, the scroll view and carousel view will work properly as shown below.
 
 <p align="center">
-  <img width=600 src="https://user-images.githubusercontent.com/47441314/139779762-13e992e1-ccc6-4819-a283-9ec5a79ce4e9.gif" alt="Demo">
+  <img width="70%" src="https://user-images.githubusercontent.com/47441314/139779762-13e992e1-ccc6-4819-a283-9ec5a79ce4e9.gif" alt="Demo">
 </p>
 
 ## License

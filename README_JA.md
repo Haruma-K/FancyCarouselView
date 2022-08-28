@@ -7,7 +7,7 @@
 <a href="https://github.com/setchi/FancyScrollView">Fancy Scroll View</a>を使用した、UnityのuGUI用のカルーセルビューです。
 
 <p align="center">
-  <img width=700 src="https://user-images.githubusercontent.com/47441314/136406607-a3bc489f-2c77-40bc-bc6d-d2858f82a73c.gif" alt="Demo">
+  <img width="80%" src="https://user-images.githubusercontent.com/47441314/136406607-a3bc489f-2c77-40bc-bc6d-d2858f82a73c.gif" alt="Demo">
 </p>
 
 ## 目次
@@ -62,7 +62,7 @@ Fancy Carousel Viewは低レイヤー実装として<a href="https://github.com/
    * https://github.com/Haruma-K/FancyCarouselView.git?path=/Assets/FancyCarouselView
 
 <p align="center">
-  <img width=500 src="https://user-images.githubusercontent.com/47441314/118421190-97842b00-b6fb-11eb-9f94-4dc94e82367a.png" alt="Package Manager">
+  <img width="60%" src="https://user-images.githubusercontent.com/47441314/118421190-97842b00-b6fb-11eb-9f94-4dc94e82367a.png" alt="Package Manager">
 </p>
 
 あるいはPackages/manifest.jsonを開き、dependenciesブロックに以下を追記します。
@@ -212,7 +212,7 @@ Fancy Carousel Viewはカルーセルの進捗を表すプログレスビュー�
 `DotCarouselProgressView`のInspectorからProgress Element Prefabだけを差し替えることで実現できます。
 
 <p align="center">
-  <img width=600 src="https://user-images.githubusercontent.com/47441314/143854073-ce7b5f99-22b8-438d-b6dc-44a2aa1eb52f.gif" alt="Custom Progress View">
+  <img width="70%" src="https://user-images.githubusercontent.com/47441314/143854073-ce7b5f99-22b8-438d-b6dc-44a2aa1eb52f.gif" alt="Custom Progress View">
 </p>
 
 #### セルの動きをカスタムする
@@ -234,7 +234,7 @@ protected override void OnPositionUpdated(float position)
 ```
 
 <p align="center">
-  <img width=600 src="https://user-images.githubusercontent.com/47441314/136646317-d2138797-024a-44d4-af4c-b3d389972890.gif" alt="Demo">
+  <img width="70%" src="https://user-images.githubusercontent.com/47441314/136646317-d2138797-024a-44d4-af4c-b3d389972890.gif" alt="Demo">
 </p>
 
 #### スクロールビューと併せて使う
@@ -243,7 +243,7 @@ Unityの仕様によりカルーセルビューがスクロールビューのド
 すなわち、カルーセルビューをドラッグしてもスクロールビューはスクロールしません。
 
 <p align="center">
-  <img width=600 src="https://user-images.githubusercontent.com/47441314/139780467-5678bf8a-fe4b-46d4-a8e6-34c66c24d4f2.gif" alt="Demo">
+  <img width="70%" src="https://user-images.githubusercontent.com/47441314/139780467-5678bf8a-fe4b-46d4-a8e6-34c66c24d4f2.gif" alt="Demo">
 </p>
 
 このような場合にはカルーセルビューのGameObjectに`Scroll Event Propagator`コンポーネントをアタッチします。  
@@ -251,7 +251,7 @@ Unityの仕様によりカルーセルビューがスクロールビューのド
 結果として以下のようにスクロールビューとカルーセルビューが適切に動作します。
 
 <p align="center">
-  <img width=600 src="https://user-images.githubusercontent.com/47441314/139779762-13e992e1-ccc6-4819-a283-9ec5a79ce4e9.gif" alt="Demo">
+  <img width="70%" src="https://user-images.githubusercontent.com/47441314/139779762-13e992e1-ccc6-4819-a283-9ec5a79ce4e9.gif" alt="Demo">
 </p>
 
 ## ライセンス
