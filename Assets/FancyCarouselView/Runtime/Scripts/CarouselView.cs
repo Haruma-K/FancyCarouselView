@@ -40,22 +40,82 @@ namespace FancyCarouselView.Runtime.Scripts
         private bool _draggableCache;
         private Coroutine _scrollCoroutine;
 
+        protected override GameObject CellPrefab => _cellPrefab.gameObject;
+
+        public Scroller Scroller
+        {
+            get => _scroller;
+            set => _scroller = value;
+        }
+
+        public TCell CellPrefabInternal
+        {
+            get => _cellPrefab;
+            set => _cellPrefab = value;
+        }
+
+        public Vector2 CellSize
+        {
+            get => _cellSize;
+            set => _cellSize = value;
+        }
+
+        public float CellSpacing
+        {
+            get => _cellSpacing;
+            set => _cellSpacing = value;
+        }
+
+        public float SnapAnimationDuration
+        {
+            get => _snapAnimationDuration;
+            set => _snapAnimationDuration = value;
+        }
+
+        public Ease SnapAnimationType
+        {
+            get => _snapAnimationType;
+            set => _snapAnimationType = value;
+        }
+
+        public bool AutoScrollingEnabled
+        {
+            get => _autoScrollingEnabled;
+            set => _autoScrollingEnabled = value;
+        }
+
+        public float AutoScrollingIntervalSec
+        {
+            get => _autoScrollingIntervalSec;
+            set => _autoScrollingIntervalSec = value;
+        }
+
+        public bool InverseAutoScrollingDirection
+        {
+            get => _inverseAutoScrollingDirection;
+            set => _inverseAutoScrollingDirection = value;
+        }
+
+        public CarouselProgressView ProgressView
+        {
+            get => _progressView;
+            set => _progressView = value;
+        }
+
         public bool ProgressViewInteraction
         {
             get => _progressViewInteraction;
             set => _progressViewInteraction = value;
         }
 
-        protected override GameObject CellPrefab => _cellPrefab.gameObject;
-
         private int ActiveCellPosition => Mathf.RoundToInt(_scroller.Position);
 
-        private void Awake()
+        private void OnEnable()
         {
             if (_progressView != null) ActiveCellChanged += _progressView.SetActiveIndex;
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             if (_progressView != null) ActiveCellChanged -= _progressView.SetActiveIndex;
         }
