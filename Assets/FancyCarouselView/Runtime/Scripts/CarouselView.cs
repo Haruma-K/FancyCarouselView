@@ -153,6 +153,8 @@ namespace FancyCarouselView.Runtime.Scripts
 
         public CarouselCellVisibilityChangedDelegate<TData, TCell> CarouselCellVisibilityChanged { get; set; }
 
+        public Action<int, TCell> CarouselCellClicked { get; set; }
+
         public int DataCount { get; private set; }
 
         public bool IsScrolling => _scrollCoroutine != null;
@@ -315,6 +317,7 @@ namespace FancyCarouselView.Runtime.Scripts
             Context.CarouselCellInstantiated += CarouselCellInstantiated;
             Context.CarouselCellVisibilityChanged += CarouselCellVisibilityChanged;
             Context.CarouselCellRefreshedDelegate += CarouselCellRefreshed;
+            Context.CarouselCellClicked += CarouselCellClicked;
 
             _activeCellIndex = ActiveCellIndex;
             ActiveCellChanged?.Invoke(ActiveCellIndex);

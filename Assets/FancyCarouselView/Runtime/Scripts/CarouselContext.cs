@@ -1,4 +1,5 @@
-﻿using FancyScrollView;
+﻿using System;
+using FancyScrollView;
 using UnityEngine;
 
 namespace FancyCarouselView.Runtime.Scripts
@@ -39,5 +40,10 @@ namespace FancyCarouselView.Runtime.Scripts
         ///     Scroll direction.
         /// </summary>
         public ScrollDirection ScrollDirection { get; set; }
+
+        /// <summary>
+        ///     Delegate called when the carousel cell is clicked.
+        /// </summary>
+        public Action<int, TCell> CarouselCellClicked { get; set; }
     }
 }

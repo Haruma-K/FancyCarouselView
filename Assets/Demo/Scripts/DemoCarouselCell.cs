@@ -8,6 +8,14 @@ namespace Demo.Scripts
     {
         [SerializeField] private Image _image = default;
         [SerializeField] private Text _text = default;
+        [SerializeField] private Button _button = default;
+
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            _button.onClick.AddListener(() => Context.CarouselCellClicked?.Invoke(Index, this));
+        }
 
         protected override void Refresh(DemoData data)
         {

@@ -18,6 +18,13 @@ namespace Demo.Scripts
                     return new DemoData(spriteResourceKey, text);
                 })
                 .ToArray();
+
+
+            _carouselView.CarouselCellClicked += (index, cell) =>
+            {
+                print(index);
+            };
+
             _carouselView.Setup(items);
         }
     }
