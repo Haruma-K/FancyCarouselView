@@ -5,8 +5,8 @@ namespace Demo.Scripts
 {
     public class Demo : MonoBehaviour
     {
-        [SerializeField] private DemoCarouselView _carouselView = default;
-        [SerializeField, Range(1, 3)] private int _bannerCount = 3;
+        [SerializeField] private DemoCarouselView _carouselView;
+        [SerializeField] [Range(1, 3)] private int _bannerCount = 3;
 
         private void Start()
         {
@@ -15,7 +15,7 @@ namespace Demo.Scripts
                 {
                     var spriteResourceKey = $"tex_demo_banner_{i:D2}";
                     var text = $"Demo Banner {i:D2}";
-                    return new DemoData(spriteResourceKey, text);
+                    return new DemoData(spriteResourceKey, text, () => Debug.Log($"Clicked: {text}"));
                 })
                 .ToArray();
             _carouselView.Setup(items);
