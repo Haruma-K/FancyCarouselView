@@ -37,7 +37,7 @@ namespace FancyCarouselView.Runtime.Scripts
         [SerializeField] private bool _progressViewInteraction;
         private int _activeCellIndex = -1;
         private Coroutine _autoScrollCoroutine;
-        private bool _draggableCache;
+        private bool _scrollerDraggableCache;
         private Coroutine _scrollCoroutine;
 
         protected override GameObject CellPrefab => _cellPrefab.gameObject;
@@ -122,14 +122,27 @@ namespace FancyCarouselView.Runtime.Scripts
 
         void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
         {
-            _draggableCache = _scroller.Draggable;
-            if (!_scroller.Draggable) return;
+            // If the scroller draggable is set to false, do nothing.
+            if (!_scroller.Draggable)
+                return;
 
-            if ((_scroller.ScrollDirection == ScrollDirection.Vertical &&
-                 Math.Abs(eventData.delta.x) > Math.Abs(eventData.delta.y))
-                || (_scroller.ScrollDirection == ScrollDirection.Horizontal &&
-                    Math.Abs(eventData.delta.x) < Math.Abs(eventData.delta.y)))
+            // On mobile device, by using two fingers, it is possible to trigger this method twice before OnEndDrag.
+            // So to ignore second finger, do nothing if _draggingPinterId has already been set.
+            if (_draggingPinterId != -1)
+                return;
+
+            _scrollerDraggableCache = _scroller.Draggable;
+            _draggingPinterId = eventData.pointerId;
+
+            var isInvalidDragging = false;
+            isInvalidDragging |= _scroller.ScrollDirection == ScrollDirection.Vertical &&
+                                 Math.Abs(eventData.delta.x) > Math.Abs(eventData.delta.y);
+            isInvalidDragging |= _scroller.ScrollDirection == ScrollDirection.Horizontal &&
+                                 Math.Abs(eventData.delta.x) < Math.Abs(eventData.delta.y);
+            if (isInvalidDragging)
             {
+                // If the drag direction is invalid, prevent the scroller from responding to the drag event.
+                // This flag will be reset to _scrollerDraggableCache in OnEndDrag.
                 _scroller.Draggable = false;
                 return;
             }
@@ -139,8 +152,6 @@ namespace FancyCarouselView.Runtime.Scripts
 
             if (IsAutoScrolling)
                 StopAutoScrolling();
-
-            IsDragging = true;
         }
 
         public ActiveCellChangedDelegate ActiveCellChanged { get; set; }
@@ -159,7 +170,9 @@ namespace FancyCarouselView.Runtime.Scripts
 
         public bool IsAutoScrolling => _autoScrollCoroutine != null;
 
-        public bool IsDragging { get; private set; }
+        public bool IsDragging => _draggingPinterId != -1;
+
+        private int _draggingPinterId = -1;
 
         public bool Draggable => _scroller.Draggable;
 
@@ -217,8 +230,14 @@ namespace FancyCarouselView.Runtime.Scripts
 
         void IEndDragHandler.OnEndDrag(PointerEventData eventData)
         {
-            _scroller.Draggable = _draggableCache;
-            if (!_scroller.Draggable) return;
+            // If the scroller draggable is false before OnBeginDrag, do nothing.
+            if (!_scrollerDraggableCache)
+                return;
+
+            // If the pointer id is not the same as the one when the drag started, do nothing.
+            // This is possible when using two fingers on mobile devices.
+            if (_draggingPinterId != eventData.pointerId)
+                return;
 
             var pos1 = Mathf.FloorToInt(_scroller.Position);
             var pos2 = Mathf.CeilToInt(_scroller.Position);
@@ -241,7 +260,8 @@ namespace FancyCarouselView.Runtime.Scripts
             if (_autoScrollingEnabled)
                 StartAutoScrolling();
 
-            IsDragging = false;
+            _scroller.Draggable = _scrollerDraggableCache;
+            _draggingPinterId = -1;
         }
 
         private void OnProgressViewElementClicked(int index)
