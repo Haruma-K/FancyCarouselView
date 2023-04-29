@@ -31,6 +31,6 @@
     /// </summary>
     /// <typeparam name="TData"></typeparam>
     /// <typeparam name="TCell"></typeparam>
-    public delegate void CarouselCellRefreshedDelegate<TData, TCell>(TCell cell)
+    public delegate void CarouselCellRefreshedDelegate<TData, TCell>(TCell cell, TData data)
         where TCell : CarouselCell<TData, TCell>;
 }

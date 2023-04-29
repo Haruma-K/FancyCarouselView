@@ -45,7 +45,7 @@ namespace FancyCarouselView.Runtime.Scripts
         public override void UpdateContent(TData itemData)
         {
             Refresh(itemData);
-            Context.CarouselCellRefreshedDelegate?.Invoke((TCell)this);
+            Context.CarouselCellRefreshedDelegate?.Invoke((TCell)this, itemData);
         }
 
         public override void SetVisible(bool visibility)
