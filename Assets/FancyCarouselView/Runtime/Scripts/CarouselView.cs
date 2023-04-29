@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using EasingCore;
 using FancyScrollView;
 using UnityEditor;
@@ -180,14 +181,28 @@ namespace FancyCarouselView.Runtime.Scripts
 
         public ScrollDirection ScrollDirection => _scroller.ScrollDirection;
 
-        public void Setup(IList<TData> dataList)
+        void ICarouselView<TData, TCell>.Setup(IList<TData> dataList)
+        {
+            Setup((IReadOnlyList<TData>)dataList);
+        }
+
+        public void Setup(IReadOnlyList<TData> dataList)
         {
             DataCount = dataList.Count;
-            UpdateContents(dataList);
+
+            // FancyScrollView only accepts IList, so if it can be converted to IList, convert it, and if it cannot be converted, create a new List.
+            var list = dataList as IList<TData> ?? dataList.ToList();
+
+            UpdateContents(list);
             _scroller.SetTotalCount(DataCount);
             DataChanged?.Invoke();
             if (_progressView != null)
                 _progressView.Setup(DataCount);
+        }
+
+        public void Cleanup()
+        {
+            Setup(Array.Empty<TData>());
         }
 
         public void ScrollToBefore(float duration, Ease easeType, Action onComplete = null)

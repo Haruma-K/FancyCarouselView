@@ -28,6 +28,12 @@ namespace FancyCarouselView.Runtime.Scripts
                 throw new InvalidOperationException(
                     $"{nameof(DotCarouselProgressView)} requires {nameof(HorizontalLayoutGroup)} or {nameof(VerticalLayoutGroup)}. Make sure it is attached.");
 
+
+            // Remove all instances if exists
+            foreach (var instance in _progressElementInstances)
+                Destroy(instance.gameObject);
+            _progressElementInstances.Clear();
+
             _progressElementInstances = new List<DotCarouselProgressElement>(elementCount);
             for (var i = 0; i < elementCount; i++)
             {
