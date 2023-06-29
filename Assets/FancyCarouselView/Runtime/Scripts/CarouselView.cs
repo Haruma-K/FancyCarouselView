@@ -113,12 +113,25 @@ namespace FancyCarouselView.Runtime.Scripts
 
         private void OnEnable()
         {
-            if (_progressView != null) ActiveCellChanged += _progressView.SetActiveIndex;
+            if (_progressView != null) 
+                ActiveCellChanged += _progressView.SetActiveIndex;
+            
+            if (_autoScrollingEnabled) 
+                StartAutoScrolling();
         }
 
         private void OnDisable()
         {
-            if (_progressView != null) ActiveCellChanged -= _progressView.SetActiveIndex;
+            if (_progressView != null) 
+                ActiveCellChanged -= _progressView.SetActiveIndex;
+            
+            if (IsAutoScrolling)
+                StopAutoScrolling();
+            
+            if (IsScrolling)
+                StopScrolling();
+            
+            _scroller.Position = GetCircularPosition(ActiveCellPosition);
         }
 
         void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
@@ -347,9 +360,9 @@ namespace FancyCarouselView.Runtime.Scripts
             Context.CarouselSize = carouselSize;
             Context.CellSize = _cellSize;
             Context.ScrollDirection = _scroller.ScrollDirection;
-            Context.CarouselCellInstantiated += CarouselCellInstantiated;
-            Context.CarouselCellVisibilityChanged += CarouselCellVisibilityChanged;
-            Context.CarouselCellRefreshedDelegate += CarouselCellRefreshed;
+            Context.CarouselCellInstantiated += cell => CarouselCellInstantiated?.Invoke(cell);
+            Context.CarouselCellVisibilityChanged += (cell, visible) => CarouselCellVisibilityChanged?.Invoke(cell, visible);
+            Context.CarouselCellRefreshedDelegate += (cell, visible) => CarouselCellRefreshed?.Invoke(cell, visible);
 
             _activeCellIndex = ActiveCellIndex;
             ActiveCellChanged?.Invoke(ActiveCellIndex);
