@@ -208,6 +208,7 @@ namespace FancyCarouselView.Runtime.Scripts
 
             UpdateContents(list);
             _scroller.SetTotalCount(DataCount);
+            _scroller.Position = 0;
             DataChanged?.Invoke();
             if (_progressView != null)
                 _progressView.Setup(DataCount);
